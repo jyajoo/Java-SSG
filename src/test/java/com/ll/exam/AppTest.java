@@ -2,8 +2,7 @@ package com.ll.exam;
 
 import org.junit.jupiter.api.Test;
 
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
+import java.io.ByteArrayOutputStream;
 import java.util.Scanner;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -18,22 +17,19 @@ class AppTest {
 
     @Test
     public void 테스트_스캐너(){
-        String input = """
-                등록
-                명언1
-                작가1
-                """.stripIndent(); // 문자열 안의 모든 라인에 strip를 적용하여 앞 뒤 공백을 제거
-
-        InputStream in = new ByteArrayInputStream(input.getBytes());
-        Scanner sc = new Scanner(in);
+        Scanner sc = TestUtil.genScanner("안녕");
 
         String cmd = sc.nextLine().trim();
-        String content = sc.nextLine().trim();
-        String author = sc.nextLine().trim();
+        assertEquals("안녕", cmd);
+    }
 
-        assertEquals("등록", cmd);
-        assertEquals("명언1", content);
-        assertEquals("작가1", author);
+    @Test
+    public void 출력을_모니터에_하지_않고_문자열로_얻기() {
+        ByteArrayOutputStream output = TestUtil.setOutToByteArray();
+        System.out.print("안녕");
+        String rs = output.toString();
+        TestUtil.clearSetOutToByteArray(output);
 
+        assertEquals("안녕", rs);
     }
 }
