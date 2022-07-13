@@ -3,10 +3,16 @@ package com.ll.exam;
 import java.util.Scanner;
 
 public class App {
-    public void run() {
-        System.out.println("== 명언 SSG==");
 
-        Scanner sc = new Scanner(System.in);
+    private Scanner sc;
+
+    public App(Scanner sc) {
+        this.sc = sc;
+    }
+
+    public void run() {
+        System.out.println("== 명언 SSG ==");
+
         int wiseSayingLastId = 0;
 
         outer:
