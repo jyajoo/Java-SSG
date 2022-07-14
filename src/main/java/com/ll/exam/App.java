@@ -30,7 +30,7 @@ public class App {
 
                     WiseSaying wiseSaying = new WiseSaying(id, content, author);
 
-                    System.out.println(id + "번 명령이 등록되었습니다.");
+                    System.out.println(id + "번 명언이 등록되었습니다.");
                     break;
 
                 case "종료":
