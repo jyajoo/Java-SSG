@@ -54,4 +54,24 @@ class AppTest {
         assertTrue(rs.contains("== 명언 SSG =="));
         assertTrue(rs.contains("명령)"));
     }
+
+    @Test
+    public void 등록_출력_테스트() {
+        Scanner sc = TestUtil.genScanner("""
+                등록
+                삶이 있는 한 희망은 있다.
+                키케로
+                종료
+                """);
+        ByteArrayOutputStream output = TestUtil.setOutToByteArray();
+
+        new App(sc).run();
+
+        String rs = output.toString();
+        TestUtil.clearSetOutToByteArray(output);
+
+        assertTrue(rs.contains("명언 : "));
+        assertTrue(rs.contains("작가 : "));
+
+    }
 }
