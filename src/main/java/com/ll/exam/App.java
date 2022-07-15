@@ -29,10 +29,10 @@ public class App {
 
             switch (rq.getPath()) {
                 case "등록":
-                    wiseSayingController.write(rq);
+                    wiseSayingController.write();
                     break;
                 case "목록":
-                    wiseSayingController.list(rq);
+                    wiseSayingController.list();
                     break;
                 case "삭제":
                     wiseSayingController.remove(rq);
