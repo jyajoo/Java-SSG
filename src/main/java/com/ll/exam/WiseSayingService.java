@@ -5,40 +5,29 @@ import java.util.List;
 
 public class WiseSayingService {
 
-    private int wiseSayingLastId;
-    private List<WiseSaying> wiseSayingList;
+    private WiseSayingRepository wiseSayingRepository;
 
     public WiseSayingService() {
-        wiseSayingLastId = 0;
-        wiseSayingList = new ArrayList<>();
+        wiseSayingRepository = new WiseSayingRepository();
     }
 
     public WiseSaying write(String content, String author){
-        WiseSaying wiseSaying = new WiseSaying(++wiseSayingLastId, content, author);
-        wiseSayingList.add(wiseSaying);
-
-        return wiseSaying;
+        return wiseSayingRepository.write(content, author);
     }
 
     public List<WiseSaying> list() {
-        return wiseSayingList;
+        return wiseSayingRepository.list();
     }
 
     public WiseSaying findById(int id) {
-        for (WiseSaying wiseSaying : wiseSayingList) {
-            if (wiseSaying.id == id) {
-                return wiseSaying;
-            }
-        }
-        return null;
+        return wiseSayingRepository.findById(id);
     }
 
-    public void modify(WiseSaying wiseSaying, String content, String author) {
-        wiseSaying.content = content;
-        wiseSaying.author = author;
+    public boolean modify(WiseSaying wiseSaying, String content, String author) {
+        return wiseSayingRepository.modify(wiseSaying, content, author);
     }
 
-    public void remove(WiseSaying wiseSaying) {
-        wiseSayingList.remove(wiseSaying);
+    public boolean remove(WiseSaying wiseSaying) {
+        return wiseSayingRepository.remove(wiseSaying);
     }
 }
