@@ -31,7 +31,6 @@ public class App {
                 case "등록":
                     wiseSayingController.write(rq);
                     break;
-
                 case "목록":
                     wiseSayingController.list(rq);
                     break;
