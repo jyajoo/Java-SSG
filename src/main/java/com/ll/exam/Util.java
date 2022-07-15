@@ -2,6 +2,7 @@ package com.ll.exam;
 
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.nio.ByteBuffer;
@@ -38,22 +39,20 @@ public class Util {
         /*
         파일 읽기
          */
-        public static String readFromFile(String path) throws IOException {
-            RandomAccessFile reader = new RandomAccessFile(path, "r");
-            StringBuilder sb = new StringBuilder();
-            String line;
+        public static String readFromFile(String path, String defaultValue) {
+            try (RandomAccessFile reader = new RandomAccessFile(path, "r")) {
+                String body = " ";
 
-            boolean isFirst = true;
-
-            while ((line = reader.readLine()) != null) {
-                if (!isFirst) {   // 첫 줄이 아니라면, \n 처리.
-                    sb.append("\n");
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    body += new String(line.getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8);
                 }
-                sb.append(new String(line.getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8));
-                isFirst = false;
+                return body.trim();
+            } catch (FileNotFoundException e) {
+                return defaultValue;
+            } catch (IOException e) {
+                throw new RuntimeException(e);
             }
-
-            return sb.toString();
         }
     }
 }
