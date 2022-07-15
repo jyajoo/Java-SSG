@@ -96,4 +96,47 @@ class AppTest {
         assertTrue(rs.contains("2 / 나폴레옹 / 나에게 불가능이란 없다"));
         assertTrue(rs.contains("1 / 키케로 / 삶이 있는 한 희망은 있다."));
     }
+
+    @Test
+    public void 삭제() {
+        String rs = AppTestRunner.run("""
+                등록
+                삶이 있는 한 희망은 있다.
+                키케로
+                등록
+                나에게 불가능이란 없다.
+                나폴레옹
+                삭제?id=1
+                목록
+                삭제?id=1
+                종료
+                """);
+
+        assertTrue(rs.contains("1번 명인이 삭제되었습니다."));
+        assertTrue(rs.contains("2 / 나폴레옹 / 나에게 불가능이란 없다."));
+
+        assertFalse(rs.contains("1 / 키케로 / 삶이 있는 한 희망은 있다."));
+        assertTrue(rs.contains("1번 명언은 존재하지 않습니다."));
+    }
+
+    @Test
+    public void 수정() {
+        String rs = AppTestRunner.run("""
+                등록
+                삶이 있는 한 희망은 있다.
+                키케로
+                등록
+                나에게 불가능이란 없다
+                나폴레옹
+                목록
+                수정?id=1
+                나에게 불가능이란 없다.
+                나폴레옹
+                목록
+                종료
+                """);
+
+        assertTrue(rs.contains("1 / 나폴레옹 / 나에게 불가능이란 없다"));
+        assertTrue(rs.contains("1 / 나폴레옹 / 나에게 불가능이란 없다."));
+    }
 }
