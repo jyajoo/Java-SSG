@@ -5,15 +5,13 @@ import java.util.Map;
 
 public class Rq {
 
-    private String url;
-    private String path;
-    private Map<String, String> queryParams;
+    private final String path;
+    private final Map<String, String> queryParams;
 
     public Rq(String url) {
 
         String[] urlBits = url.split("\\?", 2);
 
-        this.url = url;
         this.path = urlBits[0];
 
         queryParams = new HashMap<>();

@@ -4,8 +4,8 @@ import java.util.List;
 import java.util.Scanner;
 
 public class WiseSayingController {
-    private Scanner sc;
-    private WiseSayingService wiseSayingService;
+    private final Scanner sc;
+    private final WiseSayingService wiseSayingService;
 
     public WiseSayingController(Scanner sc) {
         wiseSayingService = new WiseSayingService();

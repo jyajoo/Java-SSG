@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
+import java.nio.charset.StandardCharsets;
 
 public class Util {
     public static class file {
@@ -47,7 +48,7 @@ public class Util {
                 if (!isFirst) {   // 첫 줄이 아니라면, \n 처리.
                     sb.append("\n");
                 }
-                sb.append(new String(line.getBytes("ISO-8859-1"), "UTF-8"));
+                sb.append(new String(line.getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8));
                 isFirst = false;
             }
 

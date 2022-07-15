@@ -1,11 +1,10 @@
 package com.ll.exam;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class WiseSayingService {
 
-    private WiseSayingRepository wiseSayingRepository;
+    private final WiseSayingRepository wiseSayingRepository;
 
     public WiseSayingService() {
         wiseSayingRepository = new WiseSayingRepository();
@@ -23,11 +22,11 @@ public class WiseSayingService {
         return wiseSayingRepository.findById(id);
     }
 
-    public boolean modify(WiseSaying wiseSaying, String content, String author) {
-        return wiseSayingRepository.modify(wiseSaying, content, author);
+    public void modify(WiseSaying wiseSaying, String content, String author) {
+        wiseSayingRepository.modify(wiseSaying, content, author);
     }
 
-    public boolean remove(WiseSaying wiseSaying) {
-        return wiseSayingRepository.remove(wiseSaying);
+    public void remove(WiseSaying wiseSaying) {
+        wiseSayingRepository.remove(wiseSaying);
     }
 }

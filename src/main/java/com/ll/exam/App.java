@@ -1,14 +1,10 @@
 package com.ll.exam;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class App {
 
-    private Scanner sc;
-    int wiseSayingLastId;
-    List<WiseSaying> wiseSayingList;
+    private final Scanner sc;
 
     public App(Scanner sc) {
         this.sc = sc;
@@ -17,8 +13,6 @@ public class App {
     public void run() {
         System.out.println("== 명언 SSG ==");
 
-        wiseSayingLastId = 0;
-        wiseSayingList = new ArrayList<>();
         WiseSayingController wiseSayingController = new WiseSayingController(sc);
 
         outer:
