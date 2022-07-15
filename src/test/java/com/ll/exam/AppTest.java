@@ -33,15 +33,6 @@ class AppTest {
     }
 
     @Test
-    public void 문자열을_파일에_저장() throws IOException {
-        Util.file.mkdir("test_data");
-        Util.file.saveToFile("test_data/1.txt", "안녕");
-
-        String body = Util.file.readFromFile("test_data/1.txt");
-        assertEquals("안녕", body);
-    }
-
-    @Test
     public void 프로그램_시작시_타이틀_출력_그리고_종료() {
         String rs = AppTestRunner.run("종료");
 

@@ -15,16 +15,17 @@ public class Util {
         파일 저장
         https://www.baeldung.com/java-write-to-file#write-with-filechannel
          */
-        public static void saveToFile(String path, String body) throws IOException {
-            RandomAccessFile stream = new RandomAccessFile(path, "rw");
-            FileChannel channel = stream.getChannel();
-            byte[] strBytes = body.getBytes();
-            ByteBuffer buffer = ByteBuffer.allocate(strBytes.length);
-            buffer.put(strBytes);
-            buffer.flip();
-            channel.write(buffer);
-            stream.close();
-            channel.close();
+        public static void saveToFile(String path, String body){
+            try (RandomAccessFile stream = new RandomAccessFile(path, "rw");
+                 FileChannel channel = stream.getChannel()) {
+                byte[] strBytes = body.getBytes();
+                ByteBuffer buffer = ByteBuffer.allocate(strBytes.length);
+                buffer.put(strBytes);
+                buffer.flip();
+                channel.write(buffer);
+            } catch (IOException e) {
+
+            }
         }
 
         /*
