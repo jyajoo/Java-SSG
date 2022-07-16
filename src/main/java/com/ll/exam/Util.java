@@ -115,5 +115,29 @@ public class Util {
                 return new ArrayList<>();
             }
         }
+
+        /*
+        파일에 숫자 저장
+         */
+        public static void saveNoToFile(String path, int no) {
+            saveToFile(path, no + "");
+        }
+
+        /*
+        파일에 저장된 숫자 읽어오기
+         */
+        public static int readNoFromFile(String path, int defaultValue) {
+            String lastId = file.readFromFile(path, "");
+
+            if (lastId.isEmpty()) {
+                return defaultValue;
+            }
+
+            try {
+                return Integer.parseInt(lastId);
+            } catch (NumberFormatException e) {
+                return defaultValue;
+            }
+        }
     }
 }

@@ -16,7 +16,7 @@ public class App {
     }
 
     public static String setMode(String mode) {
-        this.mode = mode;
+        return mode = mode;
     }
 
     public void run() {

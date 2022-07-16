@@ -12,7 +12,7 @@ class WiseSayingControllerTest {
 
     @BeforeAll
     public void beforeAll() {
-        App.mode = "test";
+        App.setMode("test");
     }
 
     @BeforeEach
