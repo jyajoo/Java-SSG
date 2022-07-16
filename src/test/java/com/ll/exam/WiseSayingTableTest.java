@@ -52,4 +52,13 @@ class WiseSayingTableTest {
         assertEquals("나에게 불가능이란 없다.", wiseSayingList.get(1).content);
         assertEquals("나폴레옹", wiseSayingList.get(1).author);
     }
+
+    @Test
+    public void 삭제() {
+        wiseSayingTable.removeById(1);
+
+        WiseSaying wiseSaying = wiseSayingTable.findById(1);
+
+        assertEquals(null, wiseSaying);
+    }
 }
