@@ -12,8 +12,7 @@ public class WiseSaying {
         this.author = author;
     }
 
-    @Override
-    public String toString() {
+    public String toJson() {
         return """
                 {
                     "id": %d,
