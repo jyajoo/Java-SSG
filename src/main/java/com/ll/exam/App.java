@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class App {
 
     private final Scanner sc;
-    public static String mode = "prod";
+    private static String mode = "prod";
 
     public App(Scanner sc) {
         this.sc = sc;
@@ -13,6 +13,10 @@ public class App {
 
     public static String getBaseDir() {
         return mode + "_data";
+    }
+
+    public static String setMode(String mode) {
+        this.mode = mode;
     }
 
     public void run() {

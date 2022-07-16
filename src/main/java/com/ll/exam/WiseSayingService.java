@@ -40,6 +40,6 @@ public class WiseSayingService {
                         .map(wiseSaying -> wiseSaying.toJson())
                         .collect(Collectors.joining(",")) + "]";
 
-        Util.file.saveToFile("%s/data.json".formatted(App.getBaseDir()), json);
+        Util.file.saveToFile(WiseSayingTable.getTableDataDumpFilePath(), json);
     }
 }

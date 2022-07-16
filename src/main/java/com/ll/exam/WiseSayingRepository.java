@@ -7,7 +7,7 @@ public class WiseSayingRepository {
     private WiseSayingTable wiseSayingTable;
 
     public WiseSayingRepository() {
-        wiseSayingTable = new WiseSayingTable(App.getBaseDir());
+        wiseSayingTable = new WiseSayingTable();
     }
 
     public WiseSaying write(String content, String author){
