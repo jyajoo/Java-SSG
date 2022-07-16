@@ -75,4 +75,8 @@ public class WiseSayingController {
         }
         return wiseSaying;
     }
+
+    public void build() {
+        wiseSayingService.dumpToJson();
+    }
 }
