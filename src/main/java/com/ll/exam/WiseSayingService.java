@@ -15,7 +15,7 @@ public class WiseSayingService {
     }
 
     public List<WiseSaying> list() {
-        return wiseSayingRepository.list();
+        return wiseSayingRepository.findAll();
     }
 
     public WiseSaying findById(int id) {

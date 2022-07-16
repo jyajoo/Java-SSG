@@ -4,41 +4,29 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class WiseSayingRepository {
-    private int wiseSayingLastId;
-    private final List<WiseSaying> wiseSayingList;
+    private WiseSayingTable wiseSayingTable;
 
     public WiseSayingRepository() {
-        wiseSayingLastId = 0;
-        wiseSayingList = new ArrayList<>();
+        wiseSayingTable = new WiseSayingTable(App.getBaseDir());
     }
 
     public WiseSaying write(String content, String author){
-        WiseSaying wiseSaying = new WiseSaying(++wiseSayingLastId, content, author);
-        wiseSayingList.add(wiseSaying);
-        return wiseSaying;
+        return wiseSayingTable.save(content, author);
     }
 
-    public List<WiseSaying> list() {
-        return wiseSayingList;
+    public List<WiseSaying> findAll() {
+        return wiseSayingTable.findAll();
     }
 
     public WiseSaying findById(int id) {
-        for (WiseSaying wiseSaying : wiseSayingList) {
-            if (wiseSaying.id == id) {
-                return wiseSaying;
-            }
-        }
-        return null;
+        return wiseSayingTable.findById(id);
     }
 
     public boolean modify(WiseSaying wiseSaying, String content, String author) {
-        wiseSaying.content = content;
-        wiseSaying.author = author;
-        return true;
+        return wiseSayingTable.save(wiseSaying, content, author);
     }
 
     public boolean remove(WiseSaying wiseSaying) {
-        wiseSayingList.remove(wiseSaying);
-        return true;
+        return wiseSayingTable.removeById(wiseSaying.id);
     }
 }
